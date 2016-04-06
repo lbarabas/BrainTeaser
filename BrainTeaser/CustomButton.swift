@@ -36,10 +36,12 @@ class CustomButton : UIButton {
     func setupView() {
         self.layer.cornerRadius = cornerRadius
         
-        self.addTarget(self, action: "scaleToSmall", forControlEvents: .TouchDown)
-        self.addTarget(self, action: "scaleToSmall", forControlEvents: .TouchDragEnter)
-        self.addTarget(self, action: "scaleAnimation", forControlEvents: .TouchUpInside)
-        self.addTarget(self, action: "scaletoDefault", forControlEvents: .TouchDragExit)
+        self.addTarget(self, action: #selector(CustomButton.scaleToSmall), forControlEvents: .TouchDown)
+        self.addTarget(self, action: #selector(CustomButton.scaleToSmall), forControlEvents: .TouchDragEnter)
+        self.addTarget(self, action: #selector(CustomButton.scaleAnimation), forControlEvents: .TouchUpInside)
+        // the syntax up until Swift 2.1 was
+        //  self.addTarget(self, action: "scaletoDefault", forControlEvents: .TouchDragExit)
+        self.addTarget(self, action: #selector(CustomButton.scaleDefault), forControlEvents: .TouchDragExit)
         
     }
     

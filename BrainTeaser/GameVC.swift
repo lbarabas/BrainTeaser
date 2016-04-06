@@ -71,7 +71,7 @@ class GameVC: UIViewController {
             scoreLbl.text = "\(score)"
             scoreLbl.hidden = false
             scoreTitle.hidden = false
-            gameTime = 10
+            gameTime = 15
             timeLbl.text = "\(Int(gameTime))"
             timeLbl.hidden = false
             timeTitle.hidden = false
@@ -96,9 +96,9 @@ class GameVC: UIViewController {
 
         if (sender.titleLabel?.text == "YES" && prevShape == currentCard.currentShape) ||
            (sender.titleLabel?.text == "NO" && prevShape != currentCard.currentShape)  {
-            score++
-            match++
-            print("@\(cards) Correct")
+            score = score + 1
+            match = match + 1
+            //print("@\(cards) Correct") //debug output
             
             AnimationEngine.animateBackground(currentCard, color: GREEN, completion:
                 { (anim: POPAnimation!, finished: Bool) -> Void in
@@ -107,9 +107,9 @@ class GameVC: UIViewController {
             )
             
         } else {
-            print("@\(cards) Incorrect")
-            score--
-            mismatch++
+            //print("@\(cards) Incorrect") //debug output
+            score = score - 1
+            mismatch = mismatch + 1
             AnimationEngine.animateBackground(currentCard, color: RED, completion:
                 { (anim: POPAnimation!, finished: Bool) -> Void in
                     // do not do any data manipulation here as can't guarantee success or order
@@ -125,7 +125,7 @@ class GameVC: UIViewController {
     
     func showNextCard() {
         
-        cards++   //for debugging only
+        cards += 1   //for debugging only
         
         if let current = currentCard {
             let cardToRemove = current
@@ -177,8 +177,9 @@ class GameVC: UIViewController {
     
     
     func startGameTimer() {
-        
-        let aSelector : Selector = "updateTime"
+
+        //        let aSelector : Selector = "updateTime"
+        let aSelector : Selector = #selector(GameVC.updateTime)
         timer = NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector: aSelector, userInfo: nil, repeats: true)
         startTime = NSDate.timeIntervalSinceReferenceDate()
         
@@ -193,37 +194,48 @@ class GameVC: UIViewController {
             timeLbl.text = "\(Int(seconds))"
             
            // print("\(Int(seconds)) sec left")  //debug output
-        } else {
-           // print("time is up, \(Int(seconds))") //debug output
+        } else if (seconds <= 0) && (seconds >= -1) {
+           //  else if (seconds == 0) doesn't work as value is not exactly 0
+            
+            
+            //print("time is up, \(Int(seconds))") //debug output
             
             titleLbl.text = "Game over !"
             
-          //  noBtn.enabled = false   // doesn't make a difference
-          //  yesBtn.enabled = false
+            //  noBtn.enabled = false   // doesn't make a difference
+            yesBtn.enabled = false
             
             noBtn.hidden = true
-            yesBtn.setTitle("START N", forState: .Normal)
-            yesBtn.setTitle("START S", forState: .Selected)
-            yesBtn.setTitle("START F", forState: .Focused)
-            yesBtn.setTitle("START H", forState: .Highlighted)
-            yesBtn.setTitle("START D", forState: .Disabled)
+            yesBtn.setTitle("START", forState: .Normal)
+            //yesBtn.setTitle("START S", forState: .Selected)
+            //yesBtn.setTitle("START F", forState: .Focused)
+            //yesBtn.setTitle("START H", forState: .Highlighted)
+            //yesBtn.setTitle("RELAX", forState: .Disabled)
             
             // this following line is a guess to make sure that the buttons get updated - without they are not always and the game goes on
             yesBtn.setNeedsDisplay()    //doesn't solve the problem
             yesBtn.layoutIfNeeded()     //doesn't solve the problem
             noBtn.setNeedsDisplay()    //doesn't solve the problem
             noBtn.layoutIfNeeded()     //doesn't solve the problem
-
             
-          //  noBtn.enabled = true
-          //  yesBtn.enabled = true
+            
+            //  noBtn.enabled = true
+            //  yesBtn.enabled = true
             
             timeLbl.hidden = true
             timeTitle.hidden = true
             
-            print("match = \(match), mismatch = \(mismatch)")
+            print("match = \(match), mismatch = \(mismatch)")   //debug output
             
+        } else if (seconds < -1 ) && (seconds > -4) {
+            // waiting for 3 sec timeout before the Start button is reenabled 
+            // so that the player won't accidently press it thinking it was still the YES button
+            //print("Start button delay, \(Int(seconds))") //debug output
+        
+        } else {
+            //print("Timer invalidate")   //debug output
             timer.invalidate()
+            yesBtn.enabled = true
         }
         
     }
