@@ -15,6 +15,7 @@
 		319594A11C9E389700A78599 /* GameVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3195949F1C9E389700A78599 /* GameVC.xib */; };
 		319594A31C9E3B2700A78599 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319594A21C9E3B2700A78599 /* Card.swift */; };
 		319594A51C9E3B5D00A78599 /* Card.xib in Resources */ = {isa = PBXBuildFile; fileRef = 319594A41C9E3B5D00A78599 /* Card.xib */; };
+		31B1C1241CB60E760012FF70 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 31B1C1231CB60E760012FF70 /* readme.txt */; };
 		31F4F43D1C9DCEDD00E5A77C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F4F43C1C9DCEDD00E5A77C /* AppDelegate.swift */; };
 		31F4F43F1C9DCEDD00E5A77C /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F4F43E1C9DCEDD00E5A77C /* LoginVC.swift */; };
 		31F4F4421C9DCEDD00E5A77C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31F4F4401C9DCEDD00E5A77C /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 		3195949F1C9E389700A78599 /* GameVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameVC.xib; sourceTree = "<group>"; };
 		319594A21C9E3B2700A78599 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		319594A41C9E3B5D00A78599 /* Card.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Card.xib; sourceTree = "<group>"; };
+		31B1C1231CB60E760012FF70 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		31F4F4391C9DCEDD00E5A77C /* BrainTeaser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrainTeaser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31F4F43C1C9DCEDD00E5A77C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31F4F43E1C9DCEDD00E5A77C /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				31F4F4451C9DCEDD00E5A77C /* LaunchScreen.storyboard */,
 				31F4F4481C9DCEDD00E5A77C /* Info.plist */,
 				319594911C9DD2DD00A78599 /* BrainTeaser-Bridging-Header.h */,
+				31B1C1231CB60E760012FF70 /* readme.txt */,
 			);
 			path = BrainTeaser;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31B1C1241CB60E760012FF70 /* readme.txt in Resources */,
 				31F4F4471C9DCEDD00E5A77C /* LaunchScreen.storyboard in Resources */,
 				319594A51C9E3B5D00A78599 /* Card.xib in Resources */,
 				31F4F4441C9DCEDD00E5A77C /* Assets.xcassets in Resources */,
@@ -398,6 +402,7 @@
 				PROVISIONING_PROFILE = "eac6cd83-697c-42e7-af34-6f9942da2600";
 				SWIFT_OBJC_BRIDGING_HEADER = "BrainTeaser/BrainTeaser-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -415,6 +420,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "eac6cd83-697c-42e7-af34-6f9942da2600";
 				SWIFT_OBJC_BRIDGING_HEADER = "BrainTeaser/BrainTeaser-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
